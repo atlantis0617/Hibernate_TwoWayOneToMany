@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	
+	<class name="org.hibernate.entity.Grade" table="grade">
+		<id name="gid" type="java.lang.Integer">
+			<column name="gid"/>
+			<generator class="native"/>
+		</id>
+		<property name="gname" type="java.lang.String">
+			<column name="gname"/>
+		</property>
+		<property name="gdesc" type="java.lang.String">
+			<column name="gdesc"/>
+		</property>
+		<!-- 配置一对多映射关系 -->
+		<set name="students" cascade="all-delete-orphan" lazy="true" inverse="true">
+			<key column="gid"/>
+			<one-to-many class="org.hibernate.entity.Student"/>
+		</set>
+	</class>
+	
+</hibernate-mapping>

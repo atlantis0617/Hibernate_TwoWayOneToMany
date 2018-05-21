@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="org.hibernate.entity.Student" table="student">
+		<id name="sid" type="java.lang.Integer">
+			<column name="sid"/>
+			<generator class="native"/>
+		</id>
+		<property name="sname" type="java.lang.String">
+			<column name="sname"/>
+		</property>
+		<property name="sex" type="java.lang.String">
+			<column name="sex"/>
+		</property>
+		<!-- 配置多对一映射关系 -->
+		<many-to-one name="grade" column="gid" cascade="save-update" class="org.hibernate.entity.Grade"/>
+	</class>
+
+</hibernate-mapping>

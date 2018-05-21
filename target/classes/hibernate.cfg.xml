@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+
+	<!-- 配置SessionFactory -->
+	<session-factory>
+		<!-- 配置数据库连接信息 -->
+		<property name="connection.drvier_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.url">
+			jdbc:mysql://115.29.220.62:3306/springdemo?useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8
+		</property>
+		<property name="connection.user">root</property>
+		<property name="connection.password">vtradex</property>
+		<!-- 配置hibernate常用配置 -->
+		<property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property><!-- 方言 -->
+		<property name="hbm2ddl.auto">update</property><!-- 是否自动创建表结构 -->
+		<property name="show_sql">true</property><!-- 是否展示SQL -->
+		<!-- 引入映射类 -->
+		<mapping class="org.hibernate.entity.Student"/>
+		<mapping class="org.hibernate.entity.Grade"/>
+		<!-- 引入映射文件 -->
+		<mapping resource="org/hibernate/entity/hbm/student.hbm.xml"/>
+		<mapping resource="org/hibernate/entity/hbm/grade.hbm.xml"/>
+	</session-factory>
+
+</hibernate-configuration>
